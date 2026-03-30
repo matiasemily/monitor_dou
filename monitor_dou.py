@@ -50,7 +50,7 @@ def check_dou():
                 print(f"Finalmente achamos {NOME_BUSCA}!!!")
                 enviar_email(url)
             else:
-                print(f"'{NOME_BUSCA}' ainda não consta no DOU ( ;^;)")
+                print(f"O nome '{NOME_BUSCA}' ainda não consta no DOU ( ;^;)")
         else:
             print(f"Erro no portal do DOU: Status {response.status_code}")
     except Exception as e:
