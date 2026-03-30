@@ -1,0 +1,30 @@
+name: Monitor DOU Diário
+
+on:
+  schedule:
+    # 18h Brasília (BSB) = 21h UTC
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Executar Monitoramento
+        env:
+          NOME_BUSCA: ${{ secrets.NOME_BUSCA }}
+          EMAIL_DESTINO: ${{ secrets.EMAIL_DESTINO }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        run: python monitor_dou.py
