@@ -13,18 +13,18 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       
     steps:
-      - name: Realizar Checkout
+      - name: 🔄 Realizar Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Python
+      - name: 🐍 Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: ⚙ Instalar dependências
         run: pip install requests
 
-      - name: Executar Monitoramento
+      - name: 🔎 Executar Monitoramento
         env:
           NOME_BUSCA: ${{ secrets.NOME_BUSCA }}
           EMAIL_DESTINO: ${{ secrets.EMAIL_DESTINO }}

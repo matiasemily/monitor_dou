@@ -25,9 +25,9 @@ def gerar_url(nome):
 
 # Função de notificação por e-mail
 def enviar_email(url_encontrada):
-    corpo = f"Meu nome '{NOME_BUSCA}' foi finalmente localizado no Diário Oficial!!\nÓ aqui: {url_encontrada}"
+    corpo = f"Meu nome '{NOME_BUSCA}' foi finalmente localizado no Diário Oficial! 🥳🏳️‍🌈\nÓ aqui: {url_encontrada}"
     msg = MIMEText(corpo)
-    msg['Subject'] = f'CATAPIMBAS: {NOME_BUSCA} tá no DOU'
+    msg['Subject'] = f'BABA-DOU: {NOME_BUSCA} tá no DOU 🥳'
     msg['From'] = EMAIL_USER
     msg['To'] = EMAIL_DESTINO
 
@@ -47,14 +47,14 @@ def check_dou():
         if response.status_code == 200:
             # Se não tiver "0 resultados para", o nome foi encontrado e envia e-mail
             if "0 resultados para" not in response.text:
-                print(f"Finalmente achamos {NOME_BUSCA}!!!")
+                print(f"Finalmente achamos {NOME_BUSCA}!!! 🥳")
                 enviar_email(url)
             else:
-                print(f"O nome '{NOME_BUSCA}' ainda não consta no DOU ( ;^;)")
+                print(f"O nome '{NOME_BUSCA}' ainda não consta no DOU 😞")
         else:
-            print(f"Erro no portal do DOU: Status {response.status_code}")
+            print(f"❌ Erro no portal do DOU: Status {response.status_code}")
     except Exception as e:
-        print(f"Erro na execução: {e}")
+        print(f"❌ Erro na execução: {e}")
 
 # Fallback para erros de variável de ambiente
 if __name__ == "__main__":
