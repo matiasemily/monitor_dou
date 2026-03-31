@@ -1,19 +1,17 @@
 # Monitor Baba-DOU
 
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-922CF7?style=for-the-badge&logo=github-actions&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-00B8B5?style=for-the-badge&logo=python&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-922CF7?style=for-the-badge&logo=github-actions&logoColor=white)
 ![Por Emily Matias](https://img.shields.io/badge/Por-Emily%20Matias-FF69B4?style=for-the-badge)
 
-Script automatizado babadeiro para monitorar o Diário Oficial da União de forma agendada, diariamente.
-
----
+Script automatizado para monitorar o Diário Oficial da União (DOU) de forma agendada, diariamente. Um ba-ba-DOU!
 
 ## Objetivo
-Este algoritmo facilita o monitoramento do **Diário Oficial da União (DOU)**, substituindo a busca manual por uma automação com notificação.
+Facilitar o **monitoramento** do DOU, substituindo a busca manual e repetitiva por uma automação com notificação.
 
 ## Como funciona?
 
-`tl;dr`: O script consulta o DOU diariamente às **18h**, procura o **nome exato** do usuário, e, caso encontre, dispara um alerta por e-mail.
+`tl;dr`: O script consulta o DOU todo dia às **18h**, buscando o **nome exato** do usuário. Caso o encontre, dispara um **alerta** por e-mail.
 
 1.  **Agendamento**: O GitHub Actions aciona o script todos os dias às **18h (horário de Brasília)**, equivalente às 21h UTC do GitHub.
 2.  **Busca**: O script gera a URL de consulta com base na variável de ambiente pré-configurada, escapando caracteres especiais e inserindo aspas para busca exata do nome inserido pelo usuário.
@@ -22,18 +20,18 @@ Este algoritmo facilita o monitoramento do **Diário Oficial da União (DOU)**, 
 
 ## ⚙️ Configuração
 Para tudo isso acontecer, foram necessários:
-- um repositório do GitHub (com **variáveis de ambiente**)
-- um e-mail de destino (de qualquer provedor)
-- e um Gmail <s>além de torcer para ser aprovada em concursos</s>
+- Um repositório do GitHub (com os Secrets abaixo configurados)
+- Um e-mail de destino (de qualquer provedor)
+- E um Gmail <s>além de torcer para ser aprovada em concursos</s>
 
-**Evite expor dados sensíveis no código**.
-Adicione **Secrets** (variáveis de ambiente) ao seu repositório do GitHub pela sua segurança, em `Settings > Secrets and variables > Actions`:
+> [!WARNING]
+> ***Evite expor dados sensíveis no código***. Adicione os **Secrets** a seguir ao seu repositório do GitHub pela sua segurança, em `Settings > Secrets and variables > Actions`:
 
-| Secret | Descrição |
-| :--- | :--- |
-| `NOME_BUSCA` | O nome completo que será usado para a consulta. Ex: Fulano Beltrano da Silva |
+| Secret | Descrição do valor |
+| :----- | :----------------- |
+| `NOME_BUSCA` | O **nome completo** que será usado para a consulta. Ex: Fulano Beltrano da Silva |
 | `EMAIL_USER` | Gmail que **enviará** a notificação. |
-| `EMAIL_PASS` | **Senha de App** de 16 dígitos gerada na [Conta Google](https://myaccount.google.com/apppasswords). |
+| `EMAIL_PASS` | **Senha de App** de 16 dígitos gerada na [Conta Google](https://myaccount.google.com/apppasswords), para login do Gmail de envio. |
 | `EMAIL_DESTINO` | E-mail que **receberá** os alertas. |
 
 ## 🛠️ Tecnologias
@@ -44,5 +42,5 @@ Adicione **Secrets** (variáveis de ambiente) ao seu repositório do GitHub pela
 * **SMTP/Gmail**: Protocolo para envio das notificações de alerta.
 
 ---
-> [!IMPORTANT]
+> [!NOTE]
 > Este projeto utiliza o ambiente **Node.js 24** no GitHub Actions para garantir compatibilidade com as diretrizes de 2026.
