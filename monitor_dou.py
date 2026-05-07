@@ -17,7 +17,7 @@ def gerar_url(nome):
     params = {
         'q': query_aspirada,
         's': 'todos',
-        'exactDate': 'all',
+        'exactDate': 'dia',
         'sortType': '0'
     }
     base_url = "https://www.in.gov.br/consulta/-/buscar/dou"
